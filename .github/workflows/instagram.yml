@@ -1,0 +1,44 @@
+name: Postar Instagram Merkkava
+
+on:
+  schedule:
+    # Todos os horarios em UTC (Brasilia = UTC-3, entao UTC = BRT + 3h)
+    - cron: '0 22 14 4 *'   # Post 11 — 14/04 19:00 BRT
+    - cron: '40 14 15 4 *'  # Post 12 — 15/04 11:40 BRT
+    - cron: '0 17 15 4 *'   # Post 13 — 15/04 14:00 BRT
+    - cron: '0 22 15 4 *'   # Post 14 — 15/04 19:00 BRT
+    - cron: '40 14 16 4 *'  # Post 15 — 16/04 11:40 BRT
+    - cron: '0 17 16 4 *'   # Post 16 — 16/04 14:00 BRT
+    - cron: '0 22 16 4 *'   # Post 17 — 16/04 19:00 BRT
+    - cron: '40 14 17 4 *'  # Post 18 — 17/04 11:40 BRT
+    - cron: '0 17 17 4 *'   # Post 19 — 17/04 14:00 BRT
+    - cron: '0 22 17 4 *'   # Post 20 — 17/04 19:00 BRT
+    - cron: '40 14 18 4 *'  # Post 21 — 18/04 11:40 BRT
+    - cron: '0 18 18 4 *'   # Post 22 — 18/04 15:00 BRT
+    - cron: '0 23 18 4 *'   # Post 23 — 18/04 20:00 BRT
+    - cron: '40 14 19 4 *'  # Post 24 — 19/04 11:40 BRT
+    - cron: '0 18 19 4 *'   # Post 25 — 19/04 15:00 BRT
+    - cron: '0 23 19 4 *'   # Post 26 — 19/04 20:00 BRT
+    - cron: '40 14 20 4 *'  # Post 27 — 20/04 11:40 BRT
+    - cron: '0 17 20 4 *'   # Post 28 — 20/04 14:00 BRT
+    - cron: '0 22 20 4 *'   # Post 29 — 20/04 19:00 BRT
+  workflow_dispatch:  # permite rodar manualmente pelo GitHub se precisar
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install requests
+
+      - name: Postar no Instagram
+        env:
+          META_INSTAGRAM_TOKEN: ${{ secrets.META_INSTAGRAM_TOKEN }}
+          META_INSTAGRAM_ACCOUNT_ID: ${{ secrets.META_INSTAGRAM_ACCOUNT_ID }}
+        run: python post_instagram.py
