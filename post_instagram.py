@@ -26,7 +26,7 @@ post_num = None
 for num_str, dt_str in schedule.items():
     scheduled = datetime.fromisoformat(dt_str).replace(tzinfo=timezone.utc)
     diff = abs((now_utc - scheduled).total_seconds())
-    if diff <= 600:  # 10 minutos de tolerancia
+    if diff <= 5400:  # 90 minutos de tolerancia (GitHub Actions pode atrasar)
         post_num = int(num_str)
         print(f"Post encontrado: Post {post_num} agendado para {dt_str} UTC")
         break
