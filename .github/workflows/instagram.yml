@@ -1,17 +1,7 @@
 name: Postar Instagram Merkkava
 
 on:
-  schedule:
-    # Todos os horarios em UTC (Brasilia = UTC-3, entao UTC = BRT + 3h)
-    # Posts cancelados removidos: 15, 16, 19, 22, 23, 24, 26
-    - cron: '0 22 16 4 *'   # Post 17 — 16/04 19:00 BRT
-    - cron: '40 14 17 4 *'  # Post 18 — 17/04 11:40 BRT
-    - cron: '0 22 17 4 *'   # Post 20 — 17/04 19:00 BRT
-    - cron: '40 14 18 4 *'  # Post 21 — 18/04 11:40 BRT
-    - cron: '0 18 19 4 *'   # Post 25 — 19/04 15:00 BRT
-    - cron: '40 14 20 4 *'  # Post 27 — 20/04 11:40 BRT
-    - cron: '0 17 20 4 *'   # Post 28 — 20/04 14:00 BRT
-    - cron: '0 22 20 4 *'   # Post 29 — 20/04 19:00 BRT
+  # Postagem agora e 100% manual via Claude - sem agendamento automatico
   workflow_dispatch:
 
 jobs:
